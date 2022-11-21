@@ -7,7 +7,7 @@ public class StandarConsumer extends Consumer{
     private final int MAX_Playlist = 20;
     public StandarConsumer(String nickName, String identification) {
         super(nickName, identification);
-        boughtAudios = new ArrayList<AudioFile>(100);
+        boughtAudios = new ArrayList<Song>(100);
         playLists = new ArrayList<PlayList>(20);
     }
    
@@ -20,10 +20,21 @@ public class StandarConsumer extends Consumer{
     public String addPlayList(PlayList newPlayList) {
         String msj = "Capacidad maxima alcanzada";
         if(playLists.size()<MAX_Playlist){
-            playLists.add(newPlayList);
-            msj = "playlist añadida";
+            if(playLists.add(newPlayList)){
+                msj = "playlist añadida";
+            }else{
+                msj = "No se pudo agregar la playList";
+            }
         }
         return msj;
+    }
+
+    public int getMAX_Playlist() {
+        return MAX_Playlist;
+    }
+
+    public int getMAX_SONGS() {
+        return MAX_SONGS;
     }
 
 }

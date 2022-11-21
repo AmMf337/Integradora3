@@ -57,5 +57,24 @@ public class PlayList {
     public String getName(){
         return name;
     }
-    
+    public String deleteAudio(String audioName){
+       int pos = searchAudioByName(audioName);
+       String msj = "No se encontro la caanción";
+        if(pos != -1){
+            playlistElements.remove(pos);
+            msj = "la cancion ha sido eliminada";
+        }
+        return msj;
+    }
+    public int searchAudioByName(String name){
+        int pos = -1;
+        boolean isFound = false;
+        for(int i = 0;i<playlistElements.size() && !isFound;i++){
+            if(playlistElements.get(i).getName().equalsIgnoreCase(name)){
+                pos = i;
+                isFound = true;
+            }  
+        }
+        return pos;
+    }
 }

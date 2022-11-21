@@ -6,7 +6,7 @@ public class PremiumConsumer extends Consumer {
     
     public PremiumConsumer(String nickName,String identification){
         super(nickName, identification);
-        boughtAudios = new ArrayList<AudioFile>();
+        boughtAudios = new ArrayList<Song>();
         playLists = new ArrayList<PlayList>();
     }
 
@@ -17,8 +17,10 @@ public class PremiumConsumer extends Consumer {
      */
     @Override
     public String addPlayList(PlayList newPlayList) {
-        playLists.add(newPlayList);
-        String msj = "playlist añadida";
+        String msj = "No se pudo agregar la playList";
+        if(playLists.add(newPlayList)){
+            msj = "playlist añadida";
+        }       
         return msj;
     }
 }
